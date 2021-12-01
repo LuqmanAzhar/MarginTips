@@ -1,0 +1,83 @@
+MarginTips
+
+Front End Ideas
+
+Alreayd had a simple design in mind 
+
+ideally a simple to scroll list of games played this week
+
+lighter green for team which you believe will win the margin
+
+lighter red for the team which will lose
+
+darker Green/Red for games which you can't tip on anymore (game has started)
+
+Experiment with how layout works particularly with mobile
+
+
+Results page for games after they have been completed
+- ideally colors depending how good you do
+- colours if you guess exact margin
+- colours for 1 point difference
+- colours for between 1-6 points difference
+
+
+Backend Set up 
+
+- Need users 
+- Users should be able to create Competitions
+- Competitions should have admins (multiple)
+- admins should have extra powers
+- attempt to follow a restful style api
+
+
+
+For now will store the passwords as best as possible (warning users lmao)
+
+Testing a mock game model getting information from a game service
+
+Headaches happened when adding a database support for the models 
+
+	Not really sure what happened
+
+	Reverting back to base and making sure each component works independently
+
+	removed files which were only needed locally (generated to make the it work)
+
+Initial ideas SMALL STEPS:
+	
+	Get it working get an endpoint about matches which takes a Static data from a "Service"
+
+	Match Model:
+	 - Start time
+	 - Game Complete ?
+	 - Home Team 
+	 - Away Team
+	 - Home Score
+	 - Away Score
+
+	 Considering Testing?
+
+Initially mocked up the users way of experience it:
+Mocked up a quick wireframe for front end to understand what data I will need to store and create on the backend
+
+Determined what tables would be needed to be stored in the database
+
+Using the api @ api.Squiggle.com.au to get game information
+
+1st implementation Retrieveing Game Data:
+	- How to Get data 
+	- Scheduled Per End of Game to do a HTTPRequest to get data
+	- Store data
+
+	Edge Cases:
+	- Daylight Savings
+		- The Schedule seems to Account for this on the API side
+	- Games Getting Rescheduled
+	- AFL score changes post game
+
+	Get a data with C# http client and deserialised it into a usable C# object
+
+	Testing This Particular Component of the Code Particularly the model of the Game
+
+	
