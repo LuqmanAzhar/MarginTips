@@ -18,19 +18,21 @@ namespace MarginTips.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Match>> GetAll() =>
-            MatchService.GetAll();
-
-        [HttpGet("{id}")]
-        public ActionResult<Match> Get(int id)
+        public ActionResult<List<Game>> GetAll()
         {
-            var match = MatchService.Get(id);
+            return GameService.GetAll();
+        }
+        [HttpGet("{id}")]
+        public ActionResult<Game> Get(int id)
+        {
+            var match = GameService.Get(id);
 
             if (match == null)
                 return NotFound();
 
             return match;
         }
+
     }
 
 }
