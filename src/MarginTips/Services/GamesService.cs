@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using MarginTips.Models;
@@ -13,6 +14,29 @@ namespace MarginTips.Services
         private static readonly HttpClient client = new HttpClient();
         // This needs to be dependency injected 
         // TODO: change
+        static List<Game> Games { get; }
+
+        static GameService()
+        {
+            Games = new List<Game>
+            {
+                new Game
+                {
+                    Id = 1,
+                    Year = 2021,
+                    Round = 1
+
+
+                },
+                new Game
+                {
+                    Id = 2,
+                    Year = 2020,
+                    Round = 2
+                }
+            };
+
+        }
 
         private static async Task<List<Game>> ProcessRepositories()
         {
@@ -26,7 +50,7 @@ namespace MarginTips.Services
 
             foreach (var game in responses.Games)
             {
-                Console.WriteLine(JsonSerializer.Serialize(game));
+                // Console.WriteLine(JsonSerializer.Serialize(game));
                 // Console.WriteLine(game.Id);
                 // Console.WriteLine(game.Year);
                 // Console.WriteLine(game.Round);
@@ -42,19 +66,16 @@ namespace MarginTips.Services
 
         public static List<Game> GetAll()
         {
-            return ProcessRepositories().Result;
+            return Games;
         }
 
         public static Game Get(int id)
         {
-            return new Game { };
+            return Games.FirstOrDefault(p => p.Id == id);
         }
-        public static List<Game> GetRound(int id)
+        public static List<Game> GetRound(int round)
         {
-            var games = new List<Game> { };
-            // wrong
-            return games;
-
+            return Games.FindAll(p => p.Round == round);
         }
 
 

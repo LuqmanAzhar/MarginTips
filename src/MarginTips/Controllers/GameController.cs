@@ -11,9 +11,10 @@ namespace MarginTips.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MatchController : ControllerBase
+    public class GameController : ControllerBase
     {
-        public MatchController()
+        public GameController()
+        // fix naming convention on URI capitalization
         {
         }
 
@@ -32,6 +33,12 @@ namespace MarginTips.Controllers
 
             return match;
         }
+        [HttpGet("round/{round}")]
+        public ActionResult<List<Game>> GetRound(int round)
+        {
+            return GameService.GetRound(round);
+        }
+
 
     }
 
