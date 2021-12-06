@@ -9,46 +9,47 @@ using MarginTips.Models;
 
 namespace MarginTips.Services
 {
-    public static class GamesService
+    public static class TeamsService
     {
         private static readonly HttpClient client = new HttpClient();
         // This needs to be dependency injected 
         // TODO: change
-        static List<Game> Games { get; }
+        static List<Team> Teams { get; }
 
-        static GamesService()
+        static TeamsService()
         {
-            Games = new List<Game>
+            Teams = new List<Team>
             {
-                new Game
+                new Team
                 {
                     ID = 1,
-                    Year = 2021,
-                    Round = 1
-
+                    Abbrev = "WCE",
+                    Name = "West Coast",
+                    Colour = "#003087"
 
                 },
-                new Game
+                new Team
                 {
                     ID = 2,
-                    Year = 2020,
-                    Round = 2
+                    Abbrev = "SYD",
+                    Name = "Sydney",
+                    Colour = "#ed171f"
                 }
             };
 
         }
 
-        private static async Task<List<Game>> ProcessRepositories()
+        private static async Task<List<Team>> ProcessTeams()
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Add("User-Agent", "FootyTipping testing - ContactMe AT LuqmanAzhar.com");
 
-            var streamTask = client.GetStreamAsync("https://api.squiggle.com.au/?q=games&year=2020");
+            var streamTask = client.GetStreamAsync("https://api.squiggle.com.au/?q=teams");
             var responses = await JsonSerializer.DeserializeAsync<SquiggleResponse>(await streamTask);
 
-            foreach (var game in responses.Games)
+            foreach (var game in responses.Teams)
             {
                 // Console.WriteLine(JsonSerializer.Serialize(game));
                 // Console.WriteLine(game.Id);
@@ -61,23 +62,18 @@ namespace MarginTips.Services
                 // Console.WriteLine(game.AGoals);
                 // Console.WriteLine();
             }
-            return responses.Games;
+            return responses.Teams;
         }
 
-        public static List<Game> GetAll()
+        public static List<Team> GetAll()
         {
-            return Games;
+            return ProcessTeams().Result;
         }
 
-        public static Game Get(int id)
+        public static Team Get(int id)
         {
-            return Games.FirstOrDefault(p => p.ID == id);
+            return Teams.FirstOrDefault(p => p.ID == id);
         }
-        public static List<Game> GetRound(int round)
-        {
-            return Games.FindAll(p => p.Round == round);
-        }
-
 
     }
 }

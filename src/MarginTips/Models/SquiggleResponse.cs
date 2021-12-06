@@ -10,6 +10,8 @@ namespace MarginTips.Models
     {
         [JsonPropertyName("games")]
         public List<Game> Games { get; set; }
+        [JsonPropertyName("teams")]
+        public List<Team> Teams { get; set; }
     }
 
 }

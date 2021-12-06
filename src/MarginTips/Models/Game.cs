@@ -7,7 +7,7 @@ namespace MarginTips.Models
     public class Game
     {
         [JsonPropertyName("id")]
-        public int Id { get; set; }
+        public int ID { get; set; }
         [JsonPropertyName("year")]
         public int Year { get; set; }
         [JsonPropertyName("round")]

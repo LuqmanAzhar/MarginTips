@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using MarginTips.Models;
 using MarginTips.Services;
@@ -11,9 +12,9 @@ namespace MarginTips.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GameController : ControllerBase
+    public class GamesController : ControllerBase
     {
-        public GameController()
+        public GamesController()
         // fix naming convention on URI capitalization
         {
         }
@@ -21,12 +22,12 @@ namespace MarginTips.Controllers
         [HttpGet]
         public ActionResult<List<Game>> GetAll()
         {
-            return GameService.GetAll();
+            return GamesService.GetAll();
         }
         [HttpGet("{id}")]
         public ActionResult<Game> Get(int id)
         {
-            var match = GameService.Get(id);
+            var match = GamesService.Get(id);
 
             if (match == null)
                 return NotFound();
@@ -36,7 +37,7 @@ namespace MarginTips.Controllers
         [HttpGet("round/{round}")]
         public ActionResult<List<Game>> GetRound(int round)
         {
-            return GameService.GetRound(round);
+            return GamesService.GetRound(round);
         }
 
 
