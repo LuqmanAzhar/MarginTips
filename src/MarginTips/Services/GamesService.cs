@@ -13,7 +13,7 @@ namespace MarginTips.Services
     {
         private static readonly HttpClient client = new HttpClient();
         // This needs to be dependency injected 
-        // TODO: change
+        // TODO: Remove HttpClient
         static List<Game> Games { get; }
 
         static GamesService()

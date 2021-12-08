@@ -27,12 +27,12 @@ namespace MarginTips.Controllers
         [HttpGet("{id}")]
         public ActionResult<Team> Get(int id)
         {
-            var match = TeamsService.Get(id);
+            var team = TeamsService.Get(id);
 
-            if (match == null)
+            if (team == null)
                 return NotFound();
 
-            return match;
+            return team;
         }
     }
 }

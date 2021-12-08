@@ -11,12 +11,14 @@ namespace MarginTips.Data
 
         public DbSet<Team> Teams { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<League> Leagues { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         // This Method Overides the default names created with DbSet changing the DB
         {
             modelBuilder.Entity<Game>().ToTable("Game");
             modelBuilder.Entity<Team>().ToTable("Team");
+            modelBuilder.Entity<League>().ToTable("League");
         }
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using MarginTips.Data;
+using MarginTips.Services;
 
 namespace MarginTips
 {
@@ -27,6 +28,7 @@ namespace MarginTips
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<LeaguesService>();
 
             services.AddControllers();
             services.AddDbContext<AFLContext>(options =>

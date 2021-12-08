@@ -27,12 +27,12 @@ namespace MarginTips.Controllers
         [HttpGet("{id}")]
         public ActionResult<Game> Get(int id)
         {
-            var match = GamesService.Get(id);
+            var game = GamesService.Get(id);
 
-            if (match == null)
+            if (game == null)
                 return NotFound();
 
-            return match;
+            return game;
         }
         [HttpGet("round/{round}")]
         public ActionResult<List<Game>> GetRound(int round)
