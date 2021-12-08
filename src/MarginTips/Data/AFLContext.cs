@@ -14,6 +14,7 @@ namespace MarginTips.Data
         public DbSet<League> Leagues { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Tip> Tips { get; set; }
+        public DbSet<Member> Members { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         // This Method Overides the default names created with DbSet changing the DB
@@ -23,8 +24,10 @@ namespace MarginTips.Data
             modelBuilder.Entity<League>().ToTable("League");
             modelBuilder.Entity<Player>().ToTable("Player");
             modelBuilder.Entity<Tip>().ToTable("Tip");
+            modelBuilder.Entity<Member>().ToTable("Member");
 
             modelBuilder.Entity<Tip>().HasKey(c => new { c.LeagueID, c.PlayerID, c.GameID });
+            modelBuilder.Entity<Member>().HasKey(c => new { c.LeagueID, c.PlayerID });
         }
     }
 }

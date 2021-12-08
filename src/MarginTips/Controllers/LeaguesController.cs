@@ -44,6 +44,7 @@ namespace MarginTips.Controllers
 
             return league;
         }
+        // TODO: Members Resource Expose
 
     }
 

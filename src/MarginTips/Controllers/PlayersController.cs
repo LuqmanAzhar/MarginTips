@@ -29,7 +29,7 @@ namespace MarginTips.Controllers
         }
         // TODO: Create Post Endpoint Functionality
         // [HttpPost]
-        // public ActionResult Create(League player)
+        // public ActionResult Create(player player)
         // {
 
         //     LeaguesService.Create();
@@ -44,6 +44,7 @@ namespace MarginTips.Controllers
 
             return player;
         }
+        // TODO: Expose which leagues the player is part of 
 
     }
 
