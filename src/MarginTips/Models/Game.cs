@@ -1,5 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 
 namespace MarginTips.Models
@@ -7,7 +9,8 @@ namespace MarginTips.Models
     public class Game
     {
         [JsonPropertyName("id")]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int GameID { get; set; }
         [JsonPropertyName("year")]
         public int Year { get; set; }
         [JsonPropertyName("round")]
@@ -15,9 +18,9 @@ namespace MarginTips.Models
         [JsonPropertyName("roundname")]
         public string RoundName { get; set; }
         [JsonPropertyName("hteamid")]
-        public int HTeamId { get; set; }
+        public int HTeamID { get; set; }
         [JsonPropertyName("ateamid")]
-        public int ATeamId { get; set; }
+        public int ATeamID { get; set; }
         [JsonPropertyName("agoals")]
         public int AGoals { get; set; }
         [JsonPropertyName("hgoals")]
@@ -30,5 +33,7 @@ namespace MarginTips.Models
         public string LocalTime { get; set; }
         [JsonPropertyName("tz")]
         public string Tz { get; set; }
+        public Team HTeam { get; set; }
+        public Team ATeam { get; set; }
     }
 }

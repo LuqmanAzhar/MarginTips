@@ -1,5 +1,5 @@
-using System;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace MarginTips.Models
@@ -7,7 +7,8 @@ namespace MarginTips.Models
     public class Team
     {
         [JsonPropertyName("id")]
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int TeamID { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("abbrev")]

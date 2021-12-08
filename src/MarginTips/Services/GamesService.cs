@@ -22,7 +22,7 @@ namespace MarginTips.Services
             {
                 new Game
                 {
-                    ID = 1,
+                    GameID = 1,
                     Year = 2021,
                     Round = 1
 
@@ -30,7 +30,7 @@ namespace MarginTips.Services
                 },
                 new Game
                 {
-                    ID = 2,
+                    GameID = 2,
                     Year = 2020,
                     Round = 2
                 }
@@ -38,7 +38,7 @@ namespace MarginTips.Services
 
         }
 
-        private static async Task<List<Game>> ProcessRepositories()
+        public static async Task<List<Game>> ProcessGames()
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -71,7 +71,7 @@ namespace MarginTips.Services
 
         public static Game Get(int id)
         {
-            return Games.FirstOrDefault(p => p.ID == id);
+            return Games.FirstOrDefault(p => p.GameID == id);
         }
         public static List<Game> GetRound(int round)
         {

@@ -22,7 +22,7 @@ namespace MarginTips.Services
             {
                 new Team
                 {
-                    ID = 1,
+                    TeamID = 1,
                     Abbrev = "WCE",
                     Name = "West Coast",
                     Colour = "#003087"
@@ -30,7 +30,7 @@ namespace MarginTips.Services
                 },
                 new Team
                 {
-                    ID = 2,
+                    TeamID = 2,
                     Abbrev = "SYD",
                     Name = "Sydney",
                     Colour = "#ed171f"
@@ -39,7 +39,7 @@ namespace MarginTips.Services
 
         }
 
-        private static async Task<List<Team>> ProcessTeams()
+        public static async Task<List<Team>> ProcessTeams()
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
@@ -72,7 +72,7 @@ namespace MarginTips.Services
 
         public static Team Get(int id)
         {
-            return Teams.FirstOrDefault(p => p.ID == id);
+            return Teams.FirstOrDefault(p => p.TeamID == id);
         }
 
     }
