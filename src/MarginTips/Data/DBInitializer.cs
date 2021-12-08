@@ -33,6 +33,19 @@ namespace MarginTips.Data
                 Console.WriteLine($"{g.GameID} being added to DB");
                 context.Games.Add(g);
             }
+
+            var admin = new Player
+            {
+                UserName = "Admin",
+                Salt = "salty",
+                Hash = "hash"
+
+            };
+            // TODO: Rewrite admin default Player
+
+            Console.WriteLine($"{admin.UserName} player number: {admin.PlayerID}");
+            context.Players.Add(admin);
+
             context.SaveChanges();
         }
     }

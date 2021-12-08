@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using MarginTips.Data;
 using MarginTips.Services;
+using Microsoft.OpenApi.Models;
 
 namespace MarginTips
 {
@@ -29,8 +30,13 @@ namespace MarginTips
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<LeaguesService>();
+            services.AddScoped<PlayersService>();
 
             services.AddControllers();
+            services.AddSwaggerGen(c =>
+           {
+               c.SwaggerDoc("v1", new OpenApiInfo { Title = "MarginTips", Version = "v1" });
+           });
             services.AddDbContext<AFLContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("MarginTipsContextSQLite")));
 
@@ -45,6 +51,8 @@ namespace MarginTips
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MarginTips v1"));
 
             app.UseHttpsRedirection();
 
