@@ -29,8 +29,10 @@ namespace MarginTips
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: has to be a better way to add db context to all services
             services.AddScoped<LeaguesService>();
             services.AddScoped<PlayersService>();
+            services.AddScoped<TipsService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

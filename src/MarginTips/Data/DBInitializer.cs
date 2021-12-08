@@ -46,6 +46,8 @@ namespace MarginTips.Data
             Console.WriteLine($"{admin.UserName} player number: {admin.PlayerID}");
             context.Players.Add(admin);
 
+
+
             context.SaveChanges();
         }
     }
