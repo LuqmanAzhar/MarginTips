@@ -13,21 +13,22 @@ namespace MarginTips.Controllers
     [Route("[controller]")]
     public class TeamsController : ControllerBase
     {
-        public TeamsController()
-        // fix naming convention on URI capitalization
+        private readonly TeamsService _teamsService;
+        public TeamsController(TeamsService teamsService)
         {
+            _teamsService = teamsService;
         }
 
         [HttpGet]
         public ActionResult<List<Team>> GetAll()
         {
-            return TeamsService.GetAll();
+            return _teamsService.GetAll();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Team> Get(int id)
         {
-            var team = TeamsService.Get(id);
+            var team = _teamsService.Get(id);
 
             if (team == null)
                 return NotFound();

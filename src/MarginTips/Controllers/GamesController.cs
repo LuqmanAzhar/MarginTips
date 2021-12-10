@@ -14,20 +14,21 @@ namespace MarginTips.Controllers
     [Route("[controller]")]
     public class GamesController : ControllerBase
     {
-        public GamesController()
-        // fix naming convention on URI capitalization
+        private readonly GamesService _gamesService;
+        public GamesController(GamesService gamesService)
         {
+            _gamesService = gamesService;
         }
 
         [HttpGet]
         public ActionResult<List<Game>> GetAll()
         {
-            return GamesService.GetAll();
+            return _gamesService.GetAll();
         }
         [HttpGet("{id}")]
         public ActionResult<Game> Get(int id)
         {
-            var game = GamesService.Get(id);
+            var game = _gamesService.Get(id);
 
             if (game == null)
                 return NotFound();
@@ -37,9 +38,8 @@ namespace MarginTips.Controllers
         [HttpGet("round/{round}")]
         public ActionResult<List<Game>> GetRound(int round)
         {
-            return GamesService.GetRound(round);
+            return _gamesService.GetRound(round);
         }
-
 
     }
 

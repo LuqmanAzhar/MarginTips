@@ -6,36 +6,21 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using MarginTips.Models;
+using MarginTips.Data;
 
 namespace MarginTips.Services
 {
-    public static class GamesService
+    public class GamesService
     {
+        // TODO: Why do i want to pass this object to the controller instead of just use the methods
         private static readonly HttpClient client = new HttpClient();
+
+        private readonly AFLContext _context;
         // This needs to be dependency injected 
         // TODO: Remove HttpClient
-        static List<Game> Games { get; }
-
-        static GamesService()
+        public GamesService(AFLContext context)
         {
-            Games = new List<Game>
-            {
-                new Game
-                {
-                    GameID = 1,
-                    Year = 2021,
-                    Round = 1
-
-
-                },
-                new Game
-                {
-                    GameID = 2,
-                    Year = 2020,
-                    Round = 2
-                }
-            };
-
+            _context = context;
         }
 
         public static async Task<List<Game>> ProcessGames()
@@ -64,18 +49,19 @@ namespace MarginTips.Services
             return responses.Games;
         }
 
-        public static List<Game> GetAll()
+        public List<Game> GetAll()
         {
-            return Games;
+            // TODO: Figure out how to paginiate large Requests ?
+            return _context.Games.ToList();
         }
 
-        public static Game Get(int id)
+        public Game Get(int id)
         {
-            return Games.FirstOrDefault(p => p.GameID == id);
+            return _context.Games.FirstOrDefault(p => p.GameID == id);
         }
-        public static List<Game> GetRound(int round)
+        public List<Game> GetRound(int round)
         {
-            return Games.FindAll(p => p.Round == round);
+            return _context.Games.Where(g => g.Round == round).ToList();
         }
 
 

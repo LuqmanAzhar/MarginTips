@@ -8,11 +8,11 @@ namespace MarginTips.Models
         public int GameID { get; set; }
         public int Margin { get; set; }
         public bool HomeWin { get; set; }
-
+        // TODO: What Should Happen When Ties?
         public Game Game { get; set; }
         public Player Player { get; set; }
         public League League { get; set; }
 
-        // Todo: add complex attributes determining Tip correctness?
+        // TODO: add complex attributes determining Tip correctness?
     }
 }

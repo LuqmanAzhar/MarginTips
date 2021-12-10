@@ -30,6 +30,8 @@ namespace MarginTips
         public void ConfigureServices(IServiceCollection services)
         {
             // TODO: has to be a better way to add db context to all services
+            services.AddScoped<TeamsService>();
+            services.AddScoped<GamesService>();
             services.AddScoped<LeaguesService>();
             services.AddScoped<PlayersService>();
             services.AddScoped<TipsService>();

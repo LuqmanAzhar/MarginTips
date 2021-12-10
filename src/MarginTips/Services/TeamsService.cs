@@ -6,37 +6,20 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using MarginTips.Models;
+using MarginTips.Data;
 
 namespace MarginTips.Services
 {
-    public static class TeamsService
+    public class TeamsService
     {
         private static readonly HttpClient client = new HttpClient();
-        // This needs to be dependency injected 
-        // TODO: Remove Httpclient
-        static List<Team> Teams { get; }
+        // TODO: Remove Httpclient along with the static method it realies on 
 
-        static TeamsService()
+        private readonly AFLContext _context;
+
+        public TeamsService(AFLContext context)
         {
-            Teams = new List<Team>
-            {
-                new Team
-                {
-                    TeamID = 1,
-                    Abbrev = "WCE",
-                    Name = "West Coast",
-                    Colour = "#003087"
-
-                },
-                new Team
-                {
-                    TeamID = 2,
-                    Abbrev = "SYD",
-                    Name = "Sydney",
-                    Colour = "#ed171f"
-                }
-            };
-
+            _context = context;
         }
 
         public static async Task<List<Team>> ProcessTeams()
@@ -65,14 +48,14 @@ namespace MarginTips.Services
             return responses.Teams;
         }
 
-        public static List<Team> GetAll()
+        public List<Team> GetAll()
         {
-            return ProcessTeams().Result;
+            return _context.Teams.ToList();
         }
 
-        public static Team Get(int id)
+        public Team Get(int id)
         {
-            return Teams.FirstOrDefault(p => p.TeamID == id);
+            return _context.Teams.FirstOrDefault(p => p.TeamID == id);
         }
 
     }
