@@ -29,10 +29,10 @@ namespace MarginTips.Controllers
         }
         // TODO: Create Post Endpoint Functionality
         // [HttpPost]
-        // public ActionResult Create(League league)
+        // public ActionResult Create(Player player, League league)
         // {
-
-        //     LeaguesService.Create();
+        //     _leagueService.Create(player, league);
+        //     return NotFound();
         // }
         [HttpGet("{id}")]
         public ActionResult<League> Get(int id)
@@ -42,7 +42,7 @@ namespace MarginTips.Controllers
             if (league == null)
                 return NotFound();
 
-            return league;
+            return Ok();
         }
         // TODO: Members Resource Expose
 

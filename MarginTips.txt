@@ -30,9 +30,7 @@ Backend Set up
 - admins should have extra powers
 - attempt to follow a restful style api
 
-
-
-For now will store the passwords as best as possible (warning users lmao)
+For now will store the passwords as best as possible 
 
 Testing a mock game model getting information from a game service
 
@@ -61,7 +59,16 @@ Initial ideas SMALL STEPS:
 Initially mocked up the users way of experience it:
 Mocked up a quick wireframe for front end to understand what data I will need to store and create on the backend
 
-Determined what tables would be needed to be stored in the database
+Just drew some quick pictures to see what it would look like as a web app
+
+Determined what tables would be needed to be stored in the database:
+	tables:
+	- Player
+	- League (Data about League settings )
+	- Members (Intersection between League and Player Data and data about roles and Player Aliases)
+	- Game
+	- Tips (Intersection between Player League and Games)
+
 
 Using the api @ api.Squiggle.com.au to get game information
 
@@ -76,8 +83,31 @@ Using the api @ api.Squiggle.com.au to get game information
 	- Games Getting Rescheduled
 	- AFL score changes post game
 
-	Get a data with C# http client and deserialised it into a usable C# object
+	Get a data with C# http client and it into a usable C# object
 
 	Testing This Particular Component of the Code Particularly the model of the Game
 
-	Total 
+	Created a method which calls the games successfully (fixed http get)
+
+	no choice of particular game
+
+Followed 1st implementation of Game Data for Team Data
+
+Scaffolded the rest of according to the database design:
+
+	Created Models based on tables:
+		Also Created a Helper Model SquiggleResponse:
+			*** might be able to Delete it later
+	Created Services which use the use the models and are consumed by the controllers:
+		Usually a Service Per Controlller
+	Created Controllers for Each service [Each Controller is Resource based]:
+		Might want to create More Generalized one to have both AFL and NBA data in it
+
+Considering how to deploy the application:
+	Where should the application be?
+	DO I NEED A DATABASE?
+		Where should the database be?
+		HOW should it be attached to the database?
+
+Realistically this could all be done writing and reading from an google sheet?
+	Possible Solution and possible way to use.
