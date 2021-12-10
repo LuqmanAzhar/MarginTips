@@ -3,6 +3,7 @@ using MarginTips.Models;
 
 namespace MarginTips.Data
 {
+    // TODO: Check 
     public class AFLContext : DbContext
     {
         public AFLContext(DbContextOptions<AFLContext> options) : base(options)

@@ -16,6 +16,7 @@ namespace MarginTips.Controllers
     {
         private readonly GamesService _gamesService;
         public GamesController(GamesService gamesService)
+        // interface
         {
             _gamesService = gamesService;
         }

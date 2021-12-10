@@ -28,12 +28,13 @@ namespace MarginTips.Controllers
             return _playerService.GetAll();
         }
         // TODO: Create Post Endpoint Functionality
-        // [HttpPost]
-        // public ActionResult Create(player player)
-        // {
+        [HttpPost]
+        public ActionResult Create(Player player)
+        {
+            _playerService.Create(player);
 
-        //     LeaguesService.Create();
-        // }
+            return Ok();
+        }
         [HttpGet("{id}")]
         public ActionResult<Player> Get(int id)
         {

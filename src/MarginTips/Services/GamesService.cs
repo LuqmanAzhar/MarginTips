@@ -19,6 +19,7 @@ namespace MarginTips.Services
         // This needs to be dependency injected 
         // TODO: Remove HttpClient
         public GamesService(AFLContext context)
+        //interface 
         {
             _context = context;
         }
@@ -49,6 +50,8 @@ namespace MarginTips.Services
             return responses.Games;
         }
 
+        // TODO: When Called check if the game is complete
+
         public List<Game> GetAll()
         {
             // TODO: Figure out how to paginiate large Requests ?
@@ -63,6 +66,12 @@ namespace MarginTips.Services
         {
             return _context.Games.Where(g => g.Round == round).ToList();
         }
+
+
+        // TODD: Stored Context of Games for the day => On wake up check Context of Games => Request 
+        //  => Next Day for New Context
+
+        // TODO: Best Case After Game 
 
 
     }

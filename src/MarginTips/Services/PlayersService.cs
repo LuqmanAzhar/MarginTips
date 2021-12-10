@@ -24,7 +24,13 @@ namespace MarginTips.Services
             return _context.Players.FirstOrDefault(p => p.PlayerID == id);
         }
 
-        // TODO: Create Method => make New Player
+        public void Create(Player player)
+        {
+            _context.Players.Add(player);
+            _context.SaveChanges();
+
+            Console.WriteLine(player.PlayerID);
+        }
 
         // TODO: Create Method => Get Leagues of player
 

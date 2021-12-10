@@ -19,7 +19,7 @@ namespace MarginTips.Services
             return _context.Tips.ToList();
         }
 
-        // TODO: Create Tips
+        // TODO: Create Tips Remeber to add datetime on 
 
         // TODO: Game Tips
 
