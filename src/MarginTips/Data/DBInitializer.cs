@@ -21,8 +21,143 @@ namespace MarginTips.Data
 
             var teams = TeamsService.ProcessTeams().Result;
 
+            var teamColours = new List<AFLTeamColours>
+            {
+                new AFLTeamColours
+                {
+                    Abbrev = "ADE",
+                    PrimaryColour =  "#002b5c",
+                    SecondaryColour =  "#e21937",
+                    TextColour =  "#ffd200"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "BRI",
+                    PrimaryColour = "#7c0040",
+                    SecondaryColour = "#fdbe57",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "CAR",
+                    PrimaryColour = "#031a29",
+                    SecondaryColour = "#031a29",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "COL",
+                    PrimaryColour = "#ffffff",
+                    SecondaryColour = "#000000",
+                    TextColour = "#000000"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "ESS",
+                    PrimaryColour = "#000000",
+                    SecondaryColour = "#cc2031",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "FRE",
+                    PrimaryColour = "#2a0d54",
+                    SecondaryColour = "#2a0d54",
+                    TextColour = "#ffd200"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "GEE",
+                    PrimaryColour = "#ffffff",
+                    SecondaryColour = "#002b5c",
+                    TextColour = "#000000"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "GC",
+                    PrimaryColour = "#ee3728",
+                    SecondaryColour = "#ffdf16",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "GWS",
+                    PrimaryColour = "#f47920",
+                    SecondaryColour = "#f47920",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "HAW",
+                    PrimaryColour = "#4d2004",
+                    SecondaryColour = "#fbbf15",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "MEL",
+                    PrimaryColour = "#0f1131",
+                    SecondaryColour = "#cc2031",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "NOR",
+                    PrimaryColour = "#ffffff",
+                    SecondaryColour = "#1a3b8e",
+                    TextColour = "#000000"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "POR",
+                    PrimaryColour = "#008aab",
+                    SecondaryColour = "#000000",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "RIC",
+                    PrimaryColour = "#ffd200",
+                    SecondaryColour = "#000000",
+                    TextColour = "#000000"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "STK",
+                    PrimaryColour = "#ed1b2f",
+                    SecondaryColour = "#000000",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "SYD",
+                    PrimaryColour = "#ffffff",
+                    SecondaryColour = "#ed171f",
+                    TextColour = "#000000"
+                    },
+                new AFLTeamColours
+                {
+                    Abbrev = "WCE",
+                    PrimaryColour = "#003087",
+                    SecondaryColour = "#f2a900",
+                    TextColour = "#ffffff"
+                },
+                new AFLTeamColours
+                {
+                    Abbrev = "WBD",
+                    PrimaryColour = "#1a529e",
+                    SecondaryColour = "#be0027",
+                    TextColour = "#ffffff"
+                }
+            };
+
             foreach (Team t in teams)
             {
+                var g = teamColours.Find(g => g.Abbrev == t.Abbrev);
+                t.PrimaryColour = g.PrimaryColour;
+                t.SecondaryColour = g.SecondaryColour;
+                t.TextColour = g.TextColour;
+
                 Console.WriteLine($"{t.Abbrev} being added to DB");
                 context.Teams.Add(t);
             }

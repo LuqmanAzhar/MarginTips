@@ -15,6 +15,8 @@ namespace MarginTips.Models
         public string Abbrev { get; set; }
 
         [JsonPropertyName("colour")]
-        public string Colour { get; set; }
+        public string PrimaryColour { get; set; }
+        public string SecondaryColour { get; set; }
+        public string TextColour { get; set; }
     }
 }
