@@ -69,11 +69,11 @@ namespace MarginTips.Data
 
             var tips = new List<Tip>
             {
-                new Tip {GameID=5599,Margin=10,HomeWin=true,
+                new Tip {GameID=5599,Margin=10,IsHomeTipped=true,
                 Player=admin, League=league},
-                new Tip {GameID=5600,Margin=0,HomeWin=false,
+                new Tip {GameID=5600,Margin=0,IsHomeTipped=false,
                 Player=admin, League=league},
-                new Tip {GameID=6239,Margin=5,HomeWin=false,
+                new Tip {GameID=6239,Margin=5,IsHomeTipped=false,
                 Player=admin, League=league}
             };
 

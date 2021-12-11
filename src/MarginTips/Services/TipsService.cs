@@ -16,7 +16,9 @@ namespace MarginTips.Services
         }
         public List<Tip> GetAll()
         {
+
             return _context.Tips.ToList();
+
         }
 
         // TODO: Create Tips Remeber to add datetime on 
