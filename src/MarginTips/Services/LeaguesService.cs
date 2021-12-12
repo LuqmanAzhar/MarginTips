@@ -35,5 +35,12 @@ namespace MarginTips.Services
 
         // }
 
+        public List<Member> GetMembers(int id)
+        {
+
+            return _context.Members.Where(m => m.LeagueID == id).ToList();
+
+        }
+
     }
 }

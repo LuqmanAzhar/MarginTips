@@ -28,6 +28,7 @@ namespace MarginTips.Controllers
             return _leagueService.GetAll();
         }
         // TODO: Create Post Endpoint Functionality
+        // TODO: Veryfy Player Is Correct 
         // [HttpPost]
         // public ActionResult Create(Player player, League league)
         // {
@@ -35,16 +36,27 @@ namespace MarginTips.Controllers
         //     return NotFound();
         // }
         [HttpGet("{id}")]
-        public ActionResult<League> Get(int id)
+        public ActionResult<League> GetLeague(int id)
         {
             var league = _leagueService.Get(id);
 
             if (league == null)
                 return NotFound();
 
-            return Ok();
+            return Ok(league);
         }
-        // TODO: Members Resource Expose
+
+        [HttpGet("{id}/members")]
+        public ActionResult<Member> GetMembers(int id)
+        {
+            var members = _leagueService.GetMembers(id);
+
+            if (members == null)
+                return NotFound();
+
+            return Ok(members);
+        }
+
 
     }
 
