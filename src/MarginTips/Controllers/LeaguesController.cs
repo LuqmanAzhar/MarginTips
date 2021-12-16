@@ -28,12 +28,13 @@ namespace MarginTips.Controllers
             return _leagueService.GetAll();
         }
         // TODO: Create Post Endpoint Functionality
-        // TODO: Veryfy Player Is Correct 
+        // TODO: Verify if player is authorized and Authenticated
+        // TODO: Get player info without adding a player model into the answer
         // [HttpPost]
-        // public ActionResult Create(Player player, League league)
+        // public ActionResult Create(League league)
         // {
         //     _leagueService.Create(player, league);
-        //     return NotFound();
+        //     return Ok();
         // }
         [HttpGet("{id}")]
         public ActionResult<League> GetLeague(int id)

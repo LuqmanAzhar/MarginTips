@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using MarginTips.Models;
 using MarginTips.Data;
 
@@ -26,12 +27,22 @@ namespace MarginTips.Services
         //TODO: Consider is this the best way to create a new league (Maybe not a player but a token or something)
         // public void Create(Player player, League league)
         // {
-        //     // Creates a New league 
-        //     var member = new Member { Player = player, League = league };
+        //     //TODO: Validate player and League
+
+        //     Member member = new Member
+        //     {
+        //         TippingName = player.UserName,
+        //         IsAdmin = true,
+        //         Player = player,
+        //         League = league,
+        //     };
+
         //     _context.Leagues.Add(league);
+        //     _context.Members.Add(member);
         //     _context.SaveChanges();
 
-        //     Console.WriteLine(league.LeagueID);
+        //     Console.WriteLine($"League {league.LeagueName} Created");
+        //     Console.WriteLine($"Admin Member: {player.UserName}");
 
         // }
 

@@ -62,6 +62,9 @@ namespace MarginTips
 
             app.UseRouting();
 
+            // TODO: Add Authentication and support at the reccomended endpoints
+            // app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

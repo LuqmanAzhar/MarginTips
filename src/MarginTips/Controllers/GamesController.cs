@@ -25,6 +25,7 @@ namespace MarginTips.Controllers
         public ActionResult<List<Game>> GetAll()
         {
             return _gamesService.GetAll();
+
         }
         [HttpGet("{id}")]
         public ActionResult<Game> Get(int id)

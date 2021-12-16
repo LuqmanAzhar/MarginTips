@@ -6,6 +6,7 @@ namespace MarginTips.Models
     {
         public int PlayerID { get; set; }
         public int LeagueID { get; set; }
+        [Required]
         public string TippingName { get; set; }
         [Required]
         public bool IsAdmin { get; set; }
