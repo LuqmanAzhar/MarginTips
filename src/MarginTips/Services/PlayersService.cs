@@ -29,7 +29,8 @@ namespace MarginTips.Services
             _context.Players.Add(player);
             _context.SaveChanges();
 
-            Console.WriteLine(player.PlayerID);
+            //TODO: Remove Player added notification on the Console
+            Console.WriteLine($"Added Player ID:{player.PlayerID}");
         }
 
         // TODO: Create Method => Get Leagues of player

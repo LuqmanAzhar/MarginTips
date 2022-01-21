@@ -112,7 +112,10 @@ Considering how to deploy the application:
 Realistically this could all be done writing and reading from an google sheet?
 	Possible Solution and possible way to use.
 
+Learning Cors Enabling and Getting FrontEnd to Post:
+	Backend Side is straight forward with the middleware module and examples in the documentation.
+
 Creating Post endpoints:
 
 Creating Scoring Scoring Decisions:
-	
+

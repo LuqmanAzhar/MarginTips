@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using MarginTips.Models;
 using MarginTips.Data;
 
@@ -55,7 +56,7 @@ namespace MarginTips.Services
         public List<Game> GetAll()
         {
             // TODO: Figure out how to paginiate large Requests ?
-            return _context.Games.ToList();
+            return _context.Games.Include(g => g.HTeam).Include(g => g.ATeam).ToList();
         }
 
         public Game Get(int id)
@@ -64,7 +65,7 @@ namespace MarginTips.Services
         }
         public List<Game> GetRound(int round)
         {
-            return _context.Games.Where(g => g.Round == round).ToList();
+            return _context.Games.Include(t => t.HTeam).Include(t => t.ATeam).Where(g => g.Round == round).ToList();
         }
 
 

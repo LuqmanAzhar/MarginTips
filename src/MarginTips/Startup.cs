@@ -36,6 +36,19 @@ namespace MarginTips
             services.AddScoped<PlayersService>();
             services.AddScoped<TipsService>();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    //TODO: Add better CORS Policy for Security
+                    builder.WithOrigins("http://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+
+                });
+
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
            {
@@ -61,6 +74,8 @@ namespace MarginTips
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             // TODO: Add Authentication and support at the reccomended endpoints
             // app.UseAuthentication();
